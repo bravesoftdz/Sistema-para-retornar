@@ -90,7 +90,7 @@ begin
           StringList.Add(RangeMatrix[k, r]);
         end;
        Inc(k, 1);
-       Text := 'UPDATE OR INSERT INTO TATVMUNICIPAL (BDCODCID,BDREFATVM,BDCODMUNATVM,BDDESCATVM,BDALIQATVM,BDCODSER,BDIDCNAE,BDCODTRIBATVM) VALUES (4991,202103,'+QuotedStr(StringList[3])+','+QuotedStr(StringList[4])+','+StringList[5]+','+StringList[6]+','+StringList[7]+','+StringList[8]+') MATCHING (BDCODCID,BDCODMUNATVM);';
+       Text := 'UPDATE OR INSERT INTO '+{Nome da Tabela}+' (BDCODCID,BDREFATVM,BDCODMUNATVM,BDDESCATVM,BDALIQATVM,BDCODSER,BDIDCNAE,BDCODTRIBATVM) VALUES (4991,202103,'+QuotedStr(StringList[3])+','+QuotedStr(StringList[4])+','+StringList[5]+','+StringList[6]+','+StringList[7]+','+StringList[8]+') MATCHING (BDCODCID,BDCODMUNATVM);';
        StringListSQL.Add(Text);
        StringList.Clear;
        ProgressBar1.Position := ProgressBar1.Position + 1;

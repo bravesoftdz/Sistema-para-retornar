@@ -87,14 +87,13 @@ begin
         begin
           //Text := Text +  RangeMatrix[k, r] +', ' ;
           XStringGrid.Cells[(r - 1), (k - 1)] := RangeMatrix[k, r];
-          ProgressBar1.Position := ProgressBar1.Position + 1;
           StringList.Add(RangeMatrix[k, r]);
         end;
        Inc(k, 1);
-       showmessage(stringlist[9]) ;
-       Text := 'INSERT INTO TATVMUNICIPAL (BDCODATVM,BDCODCID,BDREFATVM,BDCODMUNATVM,BDDESCATVM,BDALIQATVM,BDCODSER,BDIDCNAE,BDCODTRIBATVM) VALUES ('+StringList[0]+',4991,202103,'+QuotedStr(StringList[3])+','+QuotedStr(StringList[4])+','+StringList[5]+','+StringList[6]+','+StringList[7]+','+StringList[8]+');';
+       Text := 'UPDATE OR INSERT INTO TATVMUNICIPAL (BDCODCID,BDREFATVM,BDCODMUNATVM,BDDESCATVM,BDALIQATVM,BDCODSER,BDIDCNAE,BDCODTRIBATVM) VALUES (4991,202103,'+QuotedStr(StringList[3])+','+QuotedStr(StringList[4])+','+StringList[5]+','+StringList[6]+','+StringList[7]+','+StringList[8]+') MATCHING (BDCODCID,BDCODMUNATVM);';
        StringListSQL.Add(Text);
        StringList.Clear;
+       ProgressBar1.Position := ProgressBar1.Position + 1;
        Text := emptystr;
     until k > x;
     RangeMatrix := Unassigned;
@@ -108,7 +107,7 @@ begin
           Result := True;
     end;
     ShowMessage('Arquivos importados com sucesso!') ;
-    StringListSQL.SaveToFile('C:\Users\progunico49\Desktop\SQL.sql');
+    StringListSQL.SaveToFile('C:\SQL.sql');
   end;
 
 end;
